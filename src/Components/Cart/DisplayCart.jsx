@@ -6,6 +6,7 @@ function DisplayCart() {
   const [carts, setCarts] = useState([]);
   let cartTotal = 0; 
 
+  // getting carts and setting them to a new use state (not using the one from the other page)
   function getCart() {
     axios
       .get("http://localhost:8082/cart/get")
@@ -15,6 +16,7 @@ function DisplayCart() {
       .catch(console.log);
   }
 
+  // Amending customer name
   const handleEditCart = (cartId, newCustomerName) => {
     axios
       .patch(`http://localhost:8082/cart/update/${cartId}`, { customer: newCustomerName })
@@ -25,6 +27,8 @@ function DisplayCart() {
       .catch(console.log);
   };
 
+  // calculating total cost of each cart
+  
   const calculateTotal = (cart) => {
     let total = 0;
     cart.item.forEach((item) => {

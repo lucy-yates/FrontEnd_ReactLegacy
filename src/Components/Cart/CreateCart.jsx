@@ -4,13 +4,15 @@ import axios from "axios";
 function CreateCart() {
   const [customer, setCustomer] = useState("");
   const [carts, setCarts] = useState([]);
-  const [selectedCartId, setSelectedCartId] = useState(null);
   const [items, setItems] = useState([]);
-  const [selectedItemId, setSelectedItemId] = useState(null);
+  const [selectedCartId, setSelectedCartId] = useState(null);
+    const [selectedItemId, setSelectedItemId] = useState(null);
 
   useEffect(() => {
     fetchCartsAndItems();
   }, []); 
+
+// Function that gets every cart and sets the state for "carts" and function that gets every item and sets state for "items"
 
   const fetchCartsAndItems = () => {
     axios.get("http://localhost:8082/cart/get")
@@ -30,6 +32,7 @@ function CreateCart() {
       });
   };
 
+  // function that checks for existing cart for customer and alerts if same name used, if it doesn't it creates cart
   const checkCart = () => {
     axios.get("http://localhost:8082/cart/get")
       .then((response) => {
@@ -52,6 +55,7 @@ function CreateCart() {
       });
   };
 
+  // function that creates the cart and sets the state for the "customer" and calls fetch cart and items to set the other states
   const createCart = () => {
     axios.post("http://localhost:8082/cart/create", {
       customer
@@ -64,6 +68,7 @@ function CreateCart() {
     .catch((err) => console.error(err));
   };
 
+  // function to add items to cart (validates that you've selected something) then calls fetch carts and items
   const addItemToCart = () => {
     if (!selectedCartId || !selectedItemId) {
       alert("Please select an item and a cart");
