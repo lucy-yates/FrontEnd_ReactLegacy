@@ -25,6 +25,16 @@ function DisplayCart() {
       .catch(console.log);
   };
 
+  function RemoveFromCart(id) {
+    axios
+      .patch("http://localhost:8082/item/updateCartItem/" + id)
+      .then((response) => {
+        getCart();
+      })
+
+      .catch((err) => console.error(err));
+  }
+
   const calculateTotal = (cart) => {
     let total = 0;
     cart.item.forEach((item) => {
@@ -35,7 +45,7 @@ function DisplayCart() {
 
   useEffect(() => {
     getCart();
-  }, []);
+  }, [carts]);
 
   return (
     <div className="container mt-4" style={{ marginTop: "10px" }}>
@@ -52,8 +62,14 @@ function DisplayCart() {
                   {singleCart.item.map((item) => (
                     <li key={item.id} className="list-group-item">
                       {item.id} - {item.name} - £{parseFloat(item.price).toFixed(2)}
+
+                      <button style={{marginLeft: "20px"}} onClick={() => 
+                    RemoveFromCart(item.id)
+                  }>Remove</button>
                     </li>
+                    
                   ))}
+                  
                   <li className="list-group-item">
                     <button
                       type="button"

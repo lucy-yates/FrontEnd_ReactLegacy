@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import DisplayItem from "./DisplayItem";
+import getItem from "./DisplayItem";
 
 function CreateItem() {
   const [name, setName] = useState("");
@@ -46,7 +46,7 @@ const capitalizeFirstLowercaseRest = str => {return (    str.charAt(0).toUpperCa
         alert("Item created successfully");
         
       
-        DisplayItem.getItem();
+        getItem();
       })
       .catch((err) => console.error(err));
   }

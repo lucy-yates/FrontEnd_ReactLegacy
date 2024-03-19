@@ -20,20 +20,14 @@ function getItem() {
       .catch(console.error);
 };
    
-  // getItem = function () {
-  //   axios
-  //     .get("http://localhost:8082/item/get")
-  //     .then((response) => {
-  //       setItems(response.data);
-  //     })
-  //     .catch(console.error);
-  // };
+ 
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .patch(`http://localhost:8082/cart/update/${editingItem.id}`, formData)
-      .then(() => {
+      .patch(`http://localhost:8082/item/update/${editingItem.id}`, formData)
+      .then((response) => {
+        console.log("Item updated successfully:", response.data);
         getItem();
         setEditingItem(null);
         setFormData({
@@ -56,9 +50,9 @@ function getItem() {
   const handleEdit = (item) => {
     setEditingItem(item);
     setFormData({
-      name: singleItem.name,
-      price: singleItem.price,
-      quantity: singleItem.quantity,
+      name: item.name,
+      price: item.price,
+      quantity: item.quantity,
     })
   };
 
@@ -81,9 +75,11 @@ function getItem() {
       .catch(console.error);
   }
 
+  const capitalizeFirstLowercaseRest = str => {return (    str.charAt(0).toUpperCase() + str.slice(1).toLowerCase());};
+
   useEffect(() => {
     getItem();
-  }, []);
+  }, [items]);
 
   return (
     <div className="container mt-4">
@@ -99,10 +95,10 @@ function getItem() {
                 <p className="card-text">Quantity: {singleItem.quantity}</p>
                 {editingItem && editingItem.id === singleItem.id ? (
                   <form onSubmit={handleSubmit}>
-                    <input type="text" name="name" value={formData.name} onChange={handleChange} />
+                    <input type="text" name="name" value={capitalizeFirstLowercaseRest(formData.name)} onChange={handleChange} />
                     <input type="text" name="price" value={formData.price} onChange={handleChange} />
                     <input type="text" name="quantity" value={formData.quantity} onChange={handleChange} />
-                    <button type="submit">Save</button>
+                    <button type="submit" >Save</button>
                     <button type="button" onClick={handleCancel}>Cancel</button>
                   </form>
                 ) : (
