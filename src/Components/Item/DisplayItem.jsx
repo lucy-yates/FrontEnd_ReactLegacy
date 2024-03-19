@@ -103,8 +103,9 @@ function getItem() {
                   </form>
                 ) : (
                   <>
-                    <button  onClick={() => handleEdit(singleItem)}>Edit</button>
-                    <button  onClick={() => deleteItem(singleItem.id)}>Delete</button>
+                    <button type="button" class="btn btn-warning" onClick={() => handleEdit(singleItem)}>Edit</button>
+                   
+                    <button type="button" class="btn btn-danger" style={{marginLeft: "15px"}} onClick={() => deleteItem(singleItem.id)}>Delete</button>
                   </>
                 )}
 

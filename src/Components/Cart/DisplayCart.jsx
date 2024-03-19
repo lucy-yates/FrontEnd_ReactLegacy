@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import 'bootstrap/dist/css/bootstrap.min.css'; 
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function DisplayCart() {
   const [carts, setCarts] = useState([]);
-  let cartTotal = 0; 
+  let cartTotal = 0;
 
   function getCart() {
     axios
@@ -19,7 +19,7 @@ function DisplayCart() {
     axios
       .patch(`http://localhost:8082/cart/update/${cartId}`, { customer: newCustomerName })
       .then(() => {
-        
+
         getCart();
       })
       .catch(console.log);
@@ -35,10 +35,37 @@ function DisplayCart() {
       .catch((err) => console.error(err));
   }
 
+  function deleteCart(cartId) {
+    axios
+      .delete(`http://localhost:8082/cart/remove/${cartId}`)
+      .then(() => {
+        getCart();
+      })
+      .catch((err) => console.error(err));
+
+  }
+
+  function deleteButton(cartId,cartItems) {
+
+    if (cartItems.length !== 0) {
+      return (
+        <button type="button" className="btn btn-danger" disabled> Delete cart </button>
+      )
+    }
+    else {
+      return (
+        <button class="btn btn-danger" onClick={() => { deleteCart(cartId) }} > Delete cart</button>
+      )
+    }
+
+
+  }
+
+
   const calculateTotal = (cart) => {
     let total = 0;
     cart.item.forEach((item) => {
-      total += item.price *1.0725;
+      total += item.price * 1.0725;
     });
     return total;
   };
@@ -63,13 +90,13 @@ function DisplayCart() {
                     <li key={item.id} className="list-group-item">
                       {item.id} - {item.name} - £{parseFloat(item.price).toFixed(2)}
 
-                      <button style={{marginLeft: "20px"}} onClick={() => 
-                    RemoveFromCart(item.id)
-                  }>Remove</button>
+                      <button type="button" class="btn btn-danger" style={{ marginLeft: "20px" }} onClick={() =>
+                        RemoveFromCart(item.id)
+                      }>Remove</button>
                     </li>
-                    
+
                   ))}
-                  
+
                   <li className="list-group-item">
                     <button
                       type="button"
@@ -96,6 +123,10 @@ function DisplayCart() {
                       Calculate Total (inc. service charge)
                     </button>
                   </li>
+                  <li className="list-group-item" >
+                      {deleteButton(singleCart.id, singleCart.item)}
+                  </li>
+
                 </ul>
               </div>
             </div>
