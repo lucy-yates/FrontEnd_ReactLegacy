@@ -89,10 +89,13 @@ function getItem() {
           <div key={singleItem.id} className="col-md-4 mb-4">
             <div className="card">
               <div className="card-body">
-                <h5 className="card-title">{singleItem.name}</h5>
-                <p className="card-text">ID: {singleItem.id}</p>
+                <h5 className="card-title">{singleItem.id}: {singleItem.name}</h5>
+                {/* <p className="card-text">ID: {singleItem.id}</p> */}
+                <ul className="list-group list-group-flush">
+                <li className="list-group-item">
                 <p className="card-text">Price: £{parseFloat(singleItem.price).toFixed(2)}</p>
                 <p className="card-text">Quantity: {singleItem.quantity}</p>
+                </li>
                 {editingItem && editingItem.id === singleItem.id ? (
                   <form onSubmit={handleSubmit}>
                     <input type="text" name="name" value={capitalizeFirstLowercaseRest(formData.name)} onChange={handleChange} />
@@ -103,12 +106,15 @@ function getItem() {
                   </form>
                 ) : (
                   <>
-                    <button type="button" class="btn btn-warning" onClick={() => handleEdit(singleItem)}>Edit</button>
-                   
-                    <button type="button" class="btn btn-danger" style={{marginLeft: "15px"}} onClick={() => deleteItem(singleItem.id)}>Delete</button>
+                  <li className="list-group-item">
+                    <button type="button" class="btn btn-warning" onClick={() => handleEdit(singleItem)}>Edit Item</button>
+                    </li>
+                    <li className="list-group-item">
+                    <button type="button" class="btn btn-danger"  onClick={() => deleteItem(singleItem.id)}>Delete Item</button>
+                    </li>
                   </>
                 )}
-
+                </ul>
 
               </div>
             </div>

@@ -91,7 +91,7 @@ function Home() {
                                 <ListGroupItem> 14/03/2024 - Cupcake sale in honour of Jordan Harrison </ListGroupItem>
                                 <ListGroupItem> 29/03/2024 - 30/03/2024 - Team excursion <b>(MANDATORY)</b></ListGroupItem>
                                 <ListGroupItem> 25/05/2024 - Bring your Child to work day for the birthday of estranged CEO Lucy Yates</ListGroupItem>
-                                <ListGroupItem> 19/10/2024 - Celebration of life for fantastic, lost CEO Liam McNabola on their birthday </ListGroupItem>
+                                <ListGroupItem> 19/10/2024 - Celebration of life for lost CEO Liam McNabola on their birthday </ListGroupItem>
                                 <ListGroupItem> 25/12/2024 - One Man Panto! - Celebrate Christmas Day in <i>style</i> with guest speaker Andrew Clark(e) hosting a Christmas panto! <b>(MANDATORY)</b></ListGroupItem>
                             </ListGroup>
                         </Card.Body>

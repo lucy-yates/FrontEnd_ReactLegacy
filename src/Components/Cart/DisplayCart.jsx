@@ -49,12 +49,12 @@ function DisplayCart() {
 
     if (cartItems.length !== 0) {
       return (
-        <button type="button" className="btn btn-danger" disabled> Delete cart </button>
+        <button type="button" className="btn btn-danger" disabled> Delete Cart </button>
       )
     }
     else {
       return (
-        <button class="btn btn-danger" onClick={() => { deleteCart(cartId) }} > Delete cart</button>
+        <button class="btn btn-danger" onClick={() => { deleteCart(cartId) }} > Delete Cart</button>
       )
     }
 
