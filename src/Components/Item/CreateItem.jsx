@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import DisplayItem from "./DisplayItem";
+import getItem from "./DisplayItem";
 
 function CreateItem() {
   const [name, setName] = useState("");
@@ -27,12 +27,15 @@ function CreateItem() {
       console.error(error);
     });
   }
+const formattedPrice = parseFloat(price).toFixed(2);
+
+const capitalizeFirstLowercaseRest = str => {return (    str.charAt(0).toUpperCase() + str.slice(1).toLowerCase());};
 
   function createItem() {
     axios
       .post("http://localhost:8082/item/create", {
         name,
-        price,
+        price: formattedPrice,
         quantity,
       })
       .then((response) => {
@@ -43,7 +46,7 @@ function CreateItem() {
         alert("Item created successfully");
         
       
-        DisplayItem.getItem();
+        getItem();
       })
       .catch((err) => console.error(err));
   }
@@ -61,7 +64,7 @@ function CreateItem() {
           Item Name
           <input
             type="text"
-            value={name}
+            value={capitalizeFirstLowercaseRest(name)}
             onChange={(e) => setName(e.target.value)}
           />
         </label>

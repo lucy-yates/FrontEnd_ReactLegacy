@@ -5,7 +5,7 @@ import Item from './Components/Item/Item';
 import Cart from './Components/Cart/Cart';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import logo from './logo.png';
+import logo from './LPLogo.png';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="container">
             <Link className="navbar-brand" to='/'>
-              <img src={logo} alt="Your Logo" width="150" height="150" className="d-inline-block align-left" />
+              <img src={logo} alt="Your Logo"  height="150" className="d-inline-block align-left" />
             </Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>

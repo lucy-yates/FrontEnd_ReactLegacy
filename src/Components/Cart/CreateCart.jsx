@@ -63,6 +63,7 @@ function CreateCart() {
     })
     .catch((err) => console.error(err));
   };
+  const capitalizeFirstLowercaseRest = str => {return (    str.charAt(0).toUpperCase() + str.slice(1).toLowerCase());};
 
   const addItemToCart = () => {
     if (!selectedCartId || !selectedItemId) {
@@ -96,7 +97,7 @@ function CreateCart() {
           Customer
           <input
             type="text"
-            value={customer}
+            value={capitalizeFirstLowercaseRest(customer)}
             onChange={(e) => setCustomer(e.target.value)}
           />
         </label>
