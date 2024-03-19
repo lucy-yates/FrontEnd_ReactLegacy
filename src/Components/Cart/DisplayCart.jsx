@@ -38,11 +38,11 @@ function DisplayCart() {
   }, []);
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-4" style={{ marginTop: "10px" }}>
       <div className="row">
         {carts.map((singleCart) => (
           <div key={singleCart.id} className="col-md-4 mb-4">
-            <div className="card">
+            <div className="card h-100">
               <div className="card-body">
                 <h5 className="card-title">{singleCart.id}: {singleCart.customer}</h5>
                 <ul className="list-group list-group-flush">
@@ -51,7 +51,7 @@ function DisplayCart() {
                   </li>
                   {singleCart.item.map((item) => (
                     <li key={item.id} className="list-group-item">
-                      {item.id} - {item.name} - £{item.price}
+                      {item.id} - {item.name} - £{parseFloat(item.price).toFixed(2)}
                     </li>
                   ))}
                   <li className="list-group-item">

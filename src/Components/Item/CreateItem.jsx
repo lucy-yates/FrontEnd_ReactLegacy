@@ -27,12 +27,15 @@ function CreateItem() {
       console.error(error);
     });
   }
+const formattedPrice = parseFloat(price).toFixed(2);
+
+const capitalizeFirstLowercaseRest = str => {return (    str.charAt(0).toUpperCase() + str.slice(1).toLowerCase());};
 
   function createItem() {
     axios
       .post("http://localhost:8082/item/create", {
         name,
-        price,
+        price: formattedPrice,
         quantity,
       })
       .then((response) => {
@@ -61,7 +64,7 @@ function CreateItem() {
           Item Name
           <input
             type="text"
-            value={name}
+            value={capitalizeFirstLowercaseRest(name)}
             onChange={(e) => setName(e.target.value)}
           />
         </label>
