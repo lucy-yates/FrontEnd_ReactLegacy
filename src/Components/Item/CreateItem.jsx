@@ -10,7 +10,7 @@ function CreateItem() {
   function checkItem() {
     axios.get("http://localhost:8082/item/get").then((response) => {
       console.log(response);
-      
+
       for (const item of response.data) {
         if (
           item.name &&
@@ -19,17 +19,17 @@ function CreateItem() {
         ) {
           alert("Item already listed");
           return;
-        } 
+        }
       }
-  
+
       createItem();
     }).catch(error => {
       console.error(error);
     });
   }
-const formattedPrice = parseFloat(price).toFixed(2);
+  const formattedPrice = parseFloat(price).toFixed(2);
 
-const capitalizeFirstLowercaseRest = str => {return (    str.charAt(0).toUpperCase() + str.slice(1).toLowerCase());};
+  const capitalizeFirstLowercaseRest = str => { return (str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()); };
 
   function createItem() {
     axios
@@ -44,8 +44,8 @@ const capitalizeFirstLowercaseRest = str => {return (    str.charAt(0).toUpperCa
         setPrice(0.00);
         setQuantity(0);
         alert("Item created successfully");
-        
-      
+
+
         getItem();
       })
       .catch((err) => console.error(err));

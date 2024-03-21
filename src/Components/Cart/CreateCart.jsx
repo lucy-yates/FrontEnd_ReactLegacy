@@ -10,7 +10,7 @@ function CreateCart() {
 
   useEffect(() => {
     fetchCartsAndItems();
-  }, []); 
+  }, [carts, items]); 
 
   const fetchCartsAndItems = () => {
     axios.get("http://localhost:8082/cart/get")
@@ -71,9 +71,8 @@ function CreateCart() {
       return;
     }
 
-    axios.patch(`http://localhost:8082/item/update/${selectedItemId}`, {
-      selectedItemId,
-      cart: {
+    axios.patch(`http://localhost:8082/item/addItemToCart/${selectedItemId}`, {
+            cart: {
         id: selectedCartId
       }
     })

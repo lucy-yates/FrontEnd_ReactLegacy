@@ -6,7 +6,7 @@ function DisplayCart() {
   const [carts, setCarts] = useState([]);
   let cartTotal = 0;
 
-  function getCart() {
+  function getCarts() {
     axios
       .get("http://localhost:8082/cart/get")
       .then((response) => {
@@ -17,10 +17,10 @@ function DisplayCart() {
 
   const handleEditCart = (cartId, newCustomerName) => {
     axios
-      .patch(`http://localhost:8082/cart/update/${cartId}`, { customer: newCustomerName })
+      .patch("http://localhost:8082/cart/update/" + cartId, { customer: newCustomerName })
       .then(() => {
 
-        getCart();
+        
       })
       .catch(console.log);
   };
@@ -29,7 +29,7 @@ function DisplayCart() {
     axios
       .patch("http://localhost:8082/item/updateCartItem/" + id)
       .then((response) => {
-        getCart();
+        getCarts();
       })
 
       .catch((err) => console.error(err));
@@ -39,7 +39,7 @@ function DisplayCart() {
     axios
       .delete(`http://localhost:8082/cart/remove/${cartId}`)
       .then(() => {
-        getCart();
+        getCarts();
       })
       .catch((err) => console.error(err));
 
@@ -71,8 +71,8 @@ function DisplayCart() {
   };
 
   useEffect(() => {
-    getCart();
-  }, [carts]);
+    getCarts();
+  }, []);
 
   return (
     <div className="container mt-4" style={{ marginTop: "10px" }}>
