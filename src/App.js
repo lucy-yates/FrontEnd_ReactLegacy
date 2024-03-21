@@ -3,9 +3,11 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Home from './Home/Home';
 import Item from './Components/Item/Item';
 import Cart from './Components/Cart/Cart';
+import PreviousOrders from './Components/PreviousOrders/PreviousOrders';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import logo from './LPLogo.png';
+import { NavDropdown } from 'react-bootstrap';
 
 function App() {
   return (
@@ -27,9 +29,16 @@ function App() {
                 <li className="nav-item">
                   <Link className="nav-link" to='/items' style={{ color: '#dc3545', marginLeft: "10px" }}><b>Inventory</b></Link>
                 </li>
-                <li className="nav-item">
+
+                <NavDropdown title={<span style={{ color:'#dc3545', fontWeight: 'bold' }}>Orders</span>} id="basic-nav-dropdown">
+  <Link className="dropdown-item" to='/carts'>Current Orders</Link>
+  <Link className="dropdown-item" to='/previousorders'>Previous Orders</Link>
+
+</NavDropdown>
+
+                {/* <li className="nav-item">
                   <Link className="nav-link" to='/carts' style={{ color: '#dc3545' }}><b>Orders</b></Link>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
@@ -39,6 +48,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/items' element={<Item />} />
           <Route path='/carts' element={<Cart />} />
+          <Route path='/previousorders' element={<PreviousOrders/>} />
         </Routes>
       </BrowserRouter>
     </div>

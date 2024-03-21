@@ -18,36 +18,36 @@ function Home() {
                     
                     <Carousel>
                         <Carousel.Item>
-                            <h5>"Be the change that you wish to see in the world." </h5>
-                            <p>Mahatma Gandhi</p>
+                            <h5>"LP's courses have revolutionized our studio's approach to music education, benefiting both instructors and students." </h5>
+                            <p>Sarah, Music Director at XYZ Studios</p>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <h5>"The purpose of our lives is to be happy."</h5>
-                            <p>Dalai Lama</p>
+                            <h5>"LP's courses have upskilled our team and enhanced their musical knowledge, leading to improved performance."</h5>
+                            <p>Michael, CEO of Acoustic Sounds Inc.</p>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <h5>"Embrace the elegant dance of code, for in its intricate choreography, we find the symphony of innovation" </h5>
-                            <p>Jordan Harrison</p>
+                            <h5>"LP's engaging lessons have rejuvenated our music curriculum, inspiring students of all skill levels." </h5>
+                            <p>Emma, Music Teacher at Harmony High School</p>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <h5>"In the unpredictable symphony of technology, my webcam dances to its own glitchy rhythm"</h5>
-                            <p>Piers B.</p>
+                            <h5>"LP's practical insights and industry tips have elevated my productions to new heights."</h5>
+                            <p>David, Freelance Music Producer</p>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <h5>"The greatest glory in living lies not in never falling, but in rising every time we fall."  </h5>
-                            <p>Nelson Mandela</p>
+                            <h5>"LP's courses cover essential skills for success in the music industry, providing valuable support and encouragement."</h5>
+                            <p>Alex, Aspiring Musician and Songwriter</p>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <h5>"Work harder, or else."</h5>
-                            <p><i>Estranged</i> CEO Lucy Yates</p>
+                            <h5>"LP's user-friendly courses have helped me expand my musical knowledge and pursue my passions."</h5>
+                            <p>Jessica, Music Enthusiast and Hobbyist</p>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <h5>"It does not matter how slowly you go, as long as you do not stop."</h5>
-                            <p>Confucius</p>
+                            <h5>"LP's tutorials and exercises complement my university education, bridging theory and practical skills."</h5>
+                            <p>Mark, Music Technology Student at ABC University</p>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <h5>"Life's a journey, and I'm the captain of my own ship. No limits, no boundaries, just unstoppable energy. Mr. Worldwide, making every moment count!""</h5>
-                            <p>Pitbull</p>
+                            <h5>"LP's high-quality content keeps our team ahead of the curve in audio engineering and music production."</h5>
+                            <p>Sophie, Owner of SoundScape Recording Studio</p>
                         </Carousel.Item>
                         
                         

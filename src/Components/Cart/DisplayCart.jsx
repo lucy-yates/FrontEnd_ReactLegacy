@@ -90,7 +90,7 @@ function DisplayCart() {
                     <li key={item.id} className="list-group-item">
                       {item.id} - {item.name} - £{parseFloat(item.price).toFixed(2)}
 
-                      <button type="button" class="btn btn-danger" style={{ marginLeft: "20px" }} onClick={() =>
+                      <button type="button" class="btn btn-outline-danger btn-sm" style={{ marginLeft: "20px" }} onClick={() =>
                         RemoveFromCart(item.id)
                       }>Remove</button>
                     </li>
@@ -99,6 +99,7 @@ function DisplayCart() {
 
                   <li className="list-group-item">
                     <button
+                    style={{marginRight: "20px"}}
                       type="button"
                       className="btn btn-warning"
                       onClick={() => {
@@ -110,8 +111,10 @@ function DisplayCart() {
                     >
                       Edit Customer
                     </button>
+
+                    {deleteButton(singleCart.id, singleCart.item)}
                   </li>
-                  <li className="list-group-item">
+                  {/* <li className="list-group-item">
                     <button
                       type="button"
                       className="btn btn-primary"
@@ -122,9 +125,25 @@ function DisplayCart() {
                     >
                       Calculate Total (inc. service charge)
                     </button>
-                  </li>
-                  <li className="list-group-item" >
+                  </li> */}
+                  {/* <li className="list-group-item" >
                       {deleteButton(singleCart.id, singleCart.item)}
+                  </li> */}
+                  <li className="list-group-item" >
+                  <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={() => {
+                        cartTotal = calculateTotal(singleCart);
+                        alert(`Total for ${singleCart.customer}'s cart: £${cartTotal.toFixed(2)}`);
+                      }}
+                    >
+                      Calculate Total (inc. service charge)
+                    </button>
+                    </li>
+                    <li className="list-group-item">
+
+                        <button type="button" class="btn btn-success" >Complete Order</button>
                   </li>
 
                 </ul>
