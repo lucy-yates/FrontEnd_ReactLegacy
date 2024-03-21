@@ -61,6 +61,21 @@ function DisplayCart() {
 
   }
 
+  const completeButton = (cartId, customer, items) => {
+    axios.post("http://localhost:8082/pastorder/create", {
+      customer: customer,
+      purchased: items
+    })
+    .then((response) => {
+      console.log("Order completed:", response.data);
+     
+      items.forEach(item => RemoveFromCart(item.id));
+    })
+    .catch((error) => {
+      console.error("Error completing order:", error);
+    });
+  };
+
 
   const calculateTotal = (cart) => {
     let total = 0;
@@ -143,7 +158,7 @@ function DisplayCart() {
                     </li>
                     <li className="list-group-item">
 
-                        <button type="button" class="btn btn-success" >Complete Order</button>
+                        <button type="button" class="btn btn-success" onClick={() => completeButton(singleCart.id, singleCart.customer, singleCart.items)} >Complete Order</button>
                   </li>
 
                 </ul>
