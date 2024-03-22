@@ -5,6 +5,7 @@ import Item from './Components/Item/Item';
 import Cart from './Components/Cart/Cart';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 import './App.css';
 import logo from './LPLogo.png';
 import { NavDropdown } from 'react-bootstrap';

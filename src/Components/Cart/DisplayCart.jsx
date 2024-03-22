@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function DisplayCart() {
   const [carts, setCarts] = useState([]);
+  const [items, setItems] = useState([]);
+
   let cartTotal = 0;
 
   function getCart() {
@@ -11,6 +13,11 @@ function DisplayCart() {
       .get("http://localhost:8082/cart/get")
       .then((response) => {
         setCarts(response.data);
+        // Extract and store items separately
+        const allItems = response.data.reduce((accumulator, currentCart) => {
+          return [...accumulator, ...currentCart.item];
+        }, []);
+        setItems(allItems);
       })
       .catch(console.log);
   }
@@ -61,15 +68,26 @@ function DisplayCart() {
 
   }
 
+  
+
   const completeButton = (cartId, customer, items) => {
+    if (!items || !Array.isArray(items)) {
+      console.error("Items array is not defined or is not an array");
+      return;
+    }
+  
+    // Convert items array into a string
+    const itemString = items.map(item => `${item.name}`).join(', ');
+    
+    // Send the data to the backend API
     axios.post("http://localhost:8082/pastorder/create", {
       customer: customer,
-      purchased: items
+      purchased: itemString
     })
     .then((response) => {
       console.log("Order completed:", response.data);
-     
-      items.forEach(item => RemoveFromCart(item.id));
+      
+      // Optionally, you can add code here to update the UI to indicate that the order is completed
     })
     .catch((error) => {
       console.error("Error completing order:", error);
@@ -129,21 +147,7 @@ function DisplayCart() {
 
                     {deleteButton(singleCart.id, singleCart.item)}
                   </li>
-                  {/* <li className="list-group-item">
-                    <button
-                      type="button"
-                      className="btn btn-primary"
-                      onClick={() => {
-                        cartTotal = calculateTotal(singleCart);
-                        alert(`Total for ${singleCart.customer}'s cart: £${cartTotal.toFixed(2)}`);
-                      }}
-                    >
-                      Calculate Total (inc. service charge)
-                    </button>
-                  </li> */}
-                  {/* <li className="list-group-item" >
-                      {deleteButton(singleCart.id, singleCart.item)}
-                  </li> */}
+                 
                   <li className="list-group-item" >
                   <button
                       type="button"
@@ -158,7 +162,7 @@ function DisplayCart() {
                     </li>
                     <li className="list-group-item">
 
-                        <button type="button" class="btn btn-success" onClick={() => completeButton(singleCart.id, singleCart.customer, singleCart.items)} >Complete Order</button>
+                        <button type="button" class="btn btn-success" onClick={() => completeButton(singleCart.id, singleCart.customer, singleCart.item)} >Complete Order</button>
                   </li>
 
                 </ul>
