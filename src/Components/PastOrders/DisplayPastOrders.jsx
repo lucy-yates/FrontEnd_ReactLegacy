@@ -21,7 +21,7 @@ function DisplayPastOrders(){
 
       return (
         <div className="container mt-4">
-          <h1>Previous Orders</h1>
+          <h1>Order History</h1>
           <div className="row">
             {pastOrders.map((singlePastOrder) => (
               <div key={singlePastOrder.id} className="col-md-4 mb-4">
