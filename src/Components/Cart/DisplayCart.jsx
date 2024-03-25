@@ -5,21 +5,43 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function DisplayCart() {
   const [carts, setCarts] = useState([]);
   const [items, setItems] = useState([]);
+  
 
   let cartTotal = 0;
+
+  function getItems() {
+    axios
+        .get("http://localhost:8082/item/get")
+        .then((response) => {
+          setItems(response.data);
+        })
+        .catch(console.error);
+  };
 
   function getCart() {
     axios
       .get("http://localhost:8082/cart/get")
       .then((response) => {
         setCarts(response.data);
-        // Extract and store items separately
-        const allItems = response.data.reduce((accumulator, currentCart) => {
-          return [...accumulator, ...currentCart.item];
-        }, []);
-        setItems(allItems);
-      })
+        
+             })
       .catch(console.log);
+  }
+
+
+
+  function emptyCart(cartId) {
+    getItems();
+  for (let item of items) {
+    if (item.cart === cartId) {
+
+      axios.patch("http://localhost:8082/item/updateCartItem/" + item.id)
+      .then((response) => {
+        getCart();
+              })
+    }
+
+  }
   }
 
   const handleEditCart = (cartId, newCustomerName) => {
@@ -70,7 +92,7 @@ function DisplayCart() {
 
   
 
-  const completeButton = (cartId, customer, items) => {
+  const completeButton = (customer, items, cartId) => {
     if (!items || !Array.isArray(items)) {
       console.error("Items array is not defined or is not an array");
       return;
@@ -81,13 +103,14 @@ function DisplayCart() {
     
     // Send the data to the backend API
     axios.post("http://localhost:8082/pastorder/create", {
-      customer: customer,
-      purchased: itemString
-    })
+     
+      customer,
+      purchased: itemString,
+        })
     .then((response) => {
-      console.log("Order completed:", response.data);
+      alert("Order Processed!");
+      emptyCart(cartId);
       
-      // Optionally, you can add code here to update the UI to indicate that the order is completed
     })
     .catch((error) => {
       console.error("Error completing order:", error);
@@ -162,7 +185,7 @@ function DisplayCart() {
                     </li>
                     <li className="list-group-item">
 
-                        <button type="button" class="btn btn-success" onClick={() => completeButton(singleCart.id, singleCart.customer, singleCart.item)} >Complete Order</button>
+                        <button type="button" class="btn btn-success" onClick={() => completeButton(singleCart.customer, singleCart.item, singleCart.id)} >Complete Order</button>
                   </li>
 
                 </ul>

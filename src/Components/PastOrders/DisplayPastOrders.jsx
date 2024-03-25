@@ -33,7 +33,7 @@ function DisplayPastOrders(){
                     <p className="card-text">Purchased: {singlePastOrder.purchased}</p>
                 
                     </li>
-                    
+                   
                     </ul>
     
                   </div>
