@@ -71,23 +71,21 @@ function DisplayCart() {
   
 
   const completeButton = (cartId, customer, items) => {
-    if (!items || !Array.isArray(items)) {
-      console.error("Items array is not defined or is not an array");
-      return;
-    }
-  
-    // Convert items array into a string
+ 
+
     const itemString = items.map(item => `${item.name}`).join(', ');
     
-    // Send the data to the backend API
+    
     axios.post("http://localhost:8082/pastorder/create", {
       customer: customer,
       purchased: itemString
     })
     .then((response) => {
+      alert("Order completed successfully!");
       console.log("Order completed:", response.data);
       
-      // Optionally, you can add code here to update the UI to indicate that the order is completed
+      items.forEach(item => RemoveFromCart(item.id));
+   
     })
     .catch((error) => {
       console.error("Error completing order:", error);

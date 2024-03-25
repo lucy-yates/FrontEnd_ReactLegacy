@@ -20,7 +20,7 @@ function App() {
             <Link className="navbar-brand" to='/'>
               <img src={logo} alt="Your Logo" height="150" className="d-inline-block align-left" />
             </Link>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="data-bs-target" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">

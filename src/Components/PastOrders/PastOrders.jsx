@@ -5,7 +5,7 @@ function PastOrders(){
     return(
 
 <div>
-    {/* <h1>Previous Orders</h1>
+    {/* <h1></h1>
     <br></br> */}
     <DisplayPastOrders/>
 </div>
