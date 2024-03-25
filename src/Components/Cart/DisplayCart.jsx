@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function DisplayCart() {
   const [carts, setCarts] = useState([]);
+  const [items, setItems] = useState([]);
+
   let cartTotal = 0;
 
   function getCart() {
@@ -11,6 +13,11 @@ function DisplayCart() {
       .get("http://localhost:8082/cart/get")
       .then((response) => {
         setCarts(response.data);
+       
+        const allItems = response.data.reduce((accumulator, currentCart) => {
+          return [...accumulator, ...currentCart.item];
+        }, []);
+        setItems(allItems);
       })
       .catch(console.log);
   }
@@ -49,17 +56,41 @@ function DisplayCart() {
 
     if (cartItems.length !== 0) {
       return (
-        <button type="button" className="btn btn-danger" disabled> Delete cart </button>
+        <button type="button" className="btn btn-danger" disabled> Delete Cart </button>
       )
     }
     else {
       return (
-        <button class="btn btn-danger" onClick={() => { deleteCart(cartId) }} > Delete cart</button>
+        <button class="btn btn-danger" onClick={() => { deleteCart(cartId) }} > Delete Cart</button>
       )
     }
 
 
   }
+
+  
+
+  const completeButton = (cartId, customer, items) => {
+ 
+
+    const itemString = items.map(item => `${item.name}`).join(', ');
+    
+    
+    axios.post("http://localhost:8082/pastorder/create", {
+      customer: customer,
+      purchased: itemString
+    })
+    .then((response) => {
+      alert("Order completed successfully!");
+      console.log("Order completed:", response.data);
+      
+      items.forEach(item => RemoveFromCart(item.id));
+   
+    })
+    .catch((error) => {
+      console.error("Error completing order:", error);
+    });
+  };
 
 
   const calculateTotal = (cart) => {
@@ -90,7 +121,7 @@ function DisplayCart() {
                     <li key={item.id} className="list-group-item">
                       {item.id} - {item.name} - £{parseFloat(item.price).toFixed(2)}
 
-                      <button type="button" class="btn btn-danger" style={{ marginLeft: "20px" }} onClick={() =>
+                      <button type="button" class="btn btn-outline-danger btn-sm" style={{ marginLeft: "20px" }} onClick={() =>
                         RemoveFromCart(item.id)
                       }>Remove</button>
                     </li>
@@ -99,6 +130,7 @@ function DisplayCart() {
 
                   <li className="list-group-item">
                     <button
+                    style={{marginRight: "20px"}}
                       type="button"
                       className="btn btn-warning"
                       onClick={() => {
@@ -110,9 +142,12 @@ function DisplayCart() {
                     >
                       Edit Customer
                     </button>
+
+                    {deleteButton(singleCart.id, singleCart.item)}
                   </li>
-                  <li className="list-group-item">
-                    <button
+                 
+                  <li className="list-group-item" >
+                  <button
                       type="button"
                       className="btn btn-primary"
                       onClick={() => {
@@ -122,9 +157,10 @@ function DisplayCart() {
                     >
                       Calculate Total (inc. service charge)
                     </button>
-                  </li>
-                  <li className="list-group-item" >
-                      {deleteButton(singleCart.id, singleCart.item)}
+                    </li>
+                    <li className="list-group-item">
+
+                        <button type="button" class="btn btn-success" onClick={() => completeButton(singleCart.id, singleCart.customer, singleCart.item)} >Complete Order</button>
                   </li>
 
                 </ul>
