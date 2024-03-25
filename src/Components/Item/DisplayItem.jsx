@@ -90,7 +90,7 @@ function getItem() {
             <div className="card">
               <div className="card-body">
                 <h5 className="card-title">{singleItem.id}: {singleItem.name}</h5>
-                {/* <p className="card-text">ID: {singleItem.id}</p> */}
+               
                 <ul className="list-group list-group-flush">
                 <li className="list-group-item">
                 <p className="card-text">Price: £{parseFloat(singleItem.price).toFixed(2)}</p>

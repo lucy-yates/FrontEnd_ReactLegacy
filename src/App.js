@@ -18,7 +18,7 @@ function App() {
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="container">
             <Link className="navbar-brand" to='/'>
-              <img src={logo} alt="Your Logo" height="150" className="d-inline-block align-left" />
+              <img src={logo} alt="LP Brand Logo" height="150" className="d-inline-block align-left" />
             </Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="data-bs-target" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
@@ -38,9 +38,7 @@ function App() {
 
                 </NavDropdown>
 
-                {/* <li className="nav-item">
-                  <Link className="nav-link" to='/carts' style={{ color: '#dc3545' }}><b>Orders</b></Link>
-                </li> */}
+                
               </ul>
             </div>
           </div>

@@ -96,22 +96,7 @@ function Home() {
                                 </div>
                               
                             </Card.Text>
-                            {/* <Card.Title><h2>Company Updates:</h2></Card.Title>
-                            <ListGroup>
-                                <ListGroupItem>- Attendance to the Easter Weekend team excursion has become <u>mandatory</u>. Disciplinary action may be taken against non-attendees.</ListGroupItem>
-                                <ListGroupItem>- We would like to remind everyone, including our estranged CEO Lucy Yates, that it is against UK employee law to engage in any activity that inflicts physical harm or discomfort on staff members, even as a means of addressing efficiency concerns.</ListGroupItem>
-                                <ListGroupItem>- Please can we remind all employees that speaking to the press regarding estranged CEO Lucy Yates is strictly prohibited and will carry disciplinary action.</ListGroupItem>
-                            </ListGroup>
-                            <br></br>
-                            <Card.Title> <h2>Upcoming Events:</h2></Card.Title>
-                            <ListGroup>
-                                <ListGroupItem> 13/03/2024 - Scheduled chanting for estranged CEO Lucy Yates </ListGroupItem>
-                                <ListGroupItem> 14/03/2024 - Cupcake sale in honour of Jordan Harrison </ListGroupItem>
-                                <ListGroupItem> 29/03/2024 - 30/03/2024 - Team excursion <b>(MANDATORY)</b></ListGroupItem>
-                                <ListGroupItem> 25/05/2024 - Bring your Child to work day for the birthday of estranged CEO Lucy Yates</ListGroupItem>
-                                <ListGroupItem> 19/10/2024 - Celebration of life for lost CEO Liam McNabola on their birthday </ListGroupItem>
-                                <ListGroupItem> 25/12/2024 - One Man Panto! - Celebrate Christmas Day in <i>style</i> with guest speaker Andrew Clark(e) hosting a Christmas panto! <b>(MANDATORY)</b></ListGroupItem>
-                            </ListGroup> */}
+                           
                         </Card.Body>
                     </Card>
                 </div>

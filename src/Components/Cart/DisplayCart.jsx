@@ -13,7 +13,7 @@ function DisplayCart() {
       .get("http://localhost:8082/cart/get")
       .then((response) => {
         setCarts(response.data);
-        // Extract and store items separately
+       
         const allItems = response.data.reduce((accumulator, currentCart) => {
           return [...accumulator, ...currentCart.item];
         }, []);
